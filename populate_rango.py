@@ -16,7 +16,7 @@ def populate():
         {"title":"Learn Python in 10 Minutes",
          "url":"http://www.korokithakis.net/tutorials/python/"} ]
 
-     django_pages = [
+    django_pages = [
          {"title":"Official Django Tutorial",
           "url":"https://docs.djangoproject.com/en/1.9/intro/tutorial01/"},
          {"title":"Django Rocks",
