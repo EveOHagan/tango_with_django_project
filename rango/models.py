@@ -31,4 +31,8 @@ class Page(models.Model):
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'url')
+
+
     
+
+
