@@ -1,18 +1,13 @@
+{% extends 'rango/base.html' %}
+{load staticfiles %}
 
-<!DOCTYPE html>
-{% load staticfiles %}
-
-
-
-<html>
-
-    <body>
+{% block body_block %}
 
             This tutorial has been put together by Eve O'Hagan <br />
 
             <img src="{{ MEDIA_URL}}cat.jpg"
                 alt="Picture of a Cat" />
-    <body>
+   
+{% endblock %}
 
-</html>
 

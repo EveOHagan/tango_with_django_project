@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
-<head>
-	<title>Rango</title>
-</head>
 
-<body>
-	<h1>Rango says...</h1>
-	<div>hey there partner!</div>
-
-	<h2>Most Liked Categories</h2>
+{% block body_block %}
+    {% if user.is_authenticated %}
+	<h1>howdy {{user.username }}!</h1>
+    {% else %}
+	<h1>hey there partner!</dh1>
+    {% endif %}
+	
+    <h2>Most Liked Categories</h2>
 
 	<div>
 	{% if categories %}
@@ -46,12 +45,7 @@
 	</div>
 
 	<div>
-		<a href="/rango/add_category/">Add a New Category</a><br />
-	<div/>
-
-	<div>
-		<a href="/rango/about/">About Rango</a><br />
 		<img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
 	</div>
-</body>
-</html>
+
+{% endblock %}
