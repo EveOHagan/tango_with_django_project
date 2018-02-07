@@ -11,14 +11,14 @@
         
 	{% if pages %}
 	    <ul>
-	    {% for page in pages %}
-	        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+			{% for page in pages %}
+				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
             {% endfor %}
-            </ul>
-        {% else %}
+		</ul>
+    {% else %}
 	    <strong>No pages currently in category.</strong>
-        {% endif %}
-	<a href="{% url 'add_page' category.slug %}">Add Page</a> <br/>
+	{% endif %}
+	<!-- the reverse matching call here was causing errors as it doesn't exist in urls.py yet -->
     {% else %}
         The specified category does not exist!
     {% endif %}
