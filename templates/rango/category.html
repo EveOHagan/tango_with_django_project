@@ -22,5 +22,10 @@
     {% else %}
         The specified category does not exist!
     {% endif %}
+
+	<div>
+        <a href="{% url 'add_page' category.slug %}">Add a New Page</a><br />
+    	</div> 
+
 {% endblock %}
 
