@@ -27,11 +27,8 @@ def index(request):
     return response
 
 def about(request):
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-        request.session.delete_test_cookie()
-        print(request.method)
-        print(request.user)
+        visitor_cookie_handler(request)
+        context_dict['visits'] = request.session['visits']
         return render(request, 'rango/about.html')
 
 def show_category(request, category_name_slug):
@@ -142,7 +139,8 @@ def user_login(request):
 
 @login_required
 def restricted(request):
-    return HttpResponse("Since you're logged in, you can see this text!")
+    context_dict = {'message': "Since you're logged in you can see this page!"}
+    return render(request, 'rango/restricted.html', context=context_dict)
 
 @login_required
 def user_logout(request):
@@ -162,7 +160,8 @@ def visitor_cookie_handler(request):
                                                 'last_visit',
                                                 str(datetime.now()))
     last_visit_time = datetime.strptime(last_visit_cookie[:-7],
-                                        '%Y-%m-%d %H:%M:%S')
+                                        '%Y-%m-%d %H:%M:%S')
+
     if (datetime.now() - last_visit_time).days > 0:
         visits = visits + 1
         request.session['last_visit'] = str(datetime.now())
