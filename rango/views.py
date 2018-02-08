@@ -27,9 +27,10 @@ def index(request):
     return response
 
 def about(request):
+        context_dict = {'boldmessage': "Rango says here is the about page"}
         visitor_cookie_handler(request)
         context_dict['visits'] = request.session['visits']
-        return render(request, 'rango/about.html')
+        return render(request, 'rango/about.html', context=context_dict)
 
 def show_category(request, category_name_slug):
     context_dict = {}
